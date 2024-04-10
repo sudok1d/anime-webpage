@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+  font-family: "Outfit", sans-serif; 
+  margin: 0px;
+  padding: 0px;
+}
+
+.topbar {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+#title {
+    color: white;
+    font-size: 25px;
+    padding-left: 12px;
+
+}
+
+#searchForm {
+    display: flex;
+    margin-right: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 25px;
+}
+
+#searchInput {
+    padding: 8px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 6px;
+
+}
+
+#searchButton {
+    padding: 8px 16px;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    color: white;
+    border: none;
+    border-radius: 20px; /* Ensure the button also has rounded corners */
+    cursor: pointer;
+    height: 25px; /* Adjust the height of the search button */
+}
