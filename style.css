@@ -4,10 +4,6 @@
     box-sizing: border-box;
   }
 
-html {
-    margin: 0px;
-    padding: 0px;
-}
 body {
   font-family: "Outfit", sans-serif; 
   margin: 0px;
@@ -18,16 +14,50 @@ body {
     height: 400px;
     margin: 25px 25px 25px;
     border-radius: 12px;
-    background-color: gray;
+    background-color: rgb(235, 235, 235);
     display: flex;
     align-items: center;
     justify-content: right;
 }
 
-#parakiss1 {
+.textContainer {
+    flex: 1;
+    margin-left: 50px;
+    align-items: center;
+}
+
+.imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    margin: 12px;
+}
+
+.imageContainer img {
+    max-width: 300px;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+#currentText {
+    font-size: 50px;
+}
+
+#currentImage {
     max-width: 500px;
     object-fit: cover;
-    margin-right: 20px
-    
-    
+    margin-right: 50px;
+    border-radius: 12px;
+
 }
+
+#nextButton {
+    margin-top: 10px;
+    align-self: flex-end; 
+    margin-right: 100px;
+    background-color: transparent;
+    border: 0px;
+    font-size: 50px;
+    cursor: pointer;
+}
+

@@ -28,9 +28,13 @@ async function fetchData() {
             image.src = imageUrl
             imageContainer.appendChild(image)
 
-        })
+            image.addEventListener('click', () => {
+                const synopsis = anime.data.synopsis;
+                showSynopsis(image, synopsis);
+            });
 
-          console.log(mappedData);
+        })
+         
     }
 
     catch (error) {
@@ -38,24 +42,47 @@ async function fetchData() {
     }
 }
 
+function showSynopsis(image, synopsis) {
+    const synopsisDiv = document.createElement('div')
+    synopsisDiv.classList.add('synopsisContainer')
+
+    const synopsisText = document.createElement('p')
+    synopsisText.textContent = synopsis
+
+    synopsisDiv.appendChild(synopsisText)
+
+    image.parentNode.insertBefore(synopsisDiv, image.nextSibling);
+}
+
 fetchData()
 
-
 const imageElement = document.getElementById('currentImage');
+const textElement = document.getElementById('currentText');
 const nextButton = document.getElementById('nextButton');
-const imagePaths = [ 
-    'imgs/parakiss1.webp',
-    'imgs/psychopass1.jpg'
+
+const animeData = [ 
+    {
+        imagePath: 'imgs/parakiss1.webp',
+        title: 'Paradise Kiss'
+    },
+
+    {
+        imagePath: 'imgs/psychopass1.avif',
+        title: 'Psycho Pass'
+    }
 ];
 
-let currentImageIndex = 0;
 
-function changeImage() {
-    imageElement.src = imagePaths[currentImageIndex];
-    currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+let currentItemIndex = 0;
+
+function changeDetails() {
+    imageElement.src = animeData[currentItemIndex].imagePath;
+    textElement.textContent = animeData[currentItemIndex].title;
+    currentItemIndex = (currentItemIndex + 1) % animeData.length;
     }
 
-nextButton.addEventListener('click', changeImage);
+nextButton.addEventListener('click', changeDetails);
 
-changeImage();
+changeDetails();
+
 
