@@ -21,16 +21,17 @@ async function fetchData() {
     
         console.log(animeData);
 
-        const imageContainer = document.querySelector('.imageContainer')
+        const container = document.querySelector('.imageContainer')
         animeData.forEach((anime) => {
             const imageUrl = anime.data.images.jpg.large_image_url
             const image = new Image()
             image.src = imageUrl
-            imageContainer.appendChild(image)
+            container.appendChild(image)
 
             image.addEventListener('click', () => {
                 const synopsis = anime.data.synopsis;
-                showSynopsis(image, synopsis);
+                const title = anime.data.title;
+                showSynopsis(image, synopsis, title, container);
             });
 
         })
@@ -42,17 +43,47 @@ async function fetchData() {
     }
 }
 
-function showSynopsis(image, synopsis) {
-    const synopsisDiv = document.createElement('div')
-    synopsisDiv.classList.add('synopsisContainer')
+function showSynopsis(clickedImage, synopsis, title, container) {
+    const allImages = container.querySelectorAll('img');
+    allImages.forEach((image) => {
+        if (image !== clickedImage) {
+            if (image.style.display === 'none') {
+                image.style.display = 'block'; 
+            } 
+            
+            else {
+                image.style.display = 'none'; 
+            }
+        }
+    });
 
-    const synopsisText = document.createElement('p')
-    synopsisText.textContent = synopsis
+   
+    let synopsisDiv = clickedImage.nextElementSibling
+    if (!synopsisDiv || synopsisDiv.className !== 'synopsisContainer') {
 
-    synopsisDiv.appendChild(synopsisText)
+        synopsisDiv = document.createElement('div')
+        synopsisDiv.classList.add('synopsisContainer')
 
-    image.parentNode.insertBefore(synopsisDiv, image.nextSibling);
+        const synopsisTitle = document.createElement('p')
+        synopsisTitle.classList.add('synopsisTitle');
+        synopsisTitle.textContent = title
+
+        const synopsisText = document.createElement('p')
+        synopsisText.textContent = synopsis
+
+        synopsisDiv.appendChild(synopsisTitle)
+        synopsisDiv.appendChild(synopsisText)
+
+        container.insertBefore(synopsisDiv, clickedImage.nextSibling);
+    }
+    
+    else {
+        synopsisDiv.style.display = synopsisDiv.style.display === 'none' ? 'block' : 'none';
+    }
 }
+
+    
+
 
 fetchData()
 
@@ -67,8 +98,18 @@ const animeData = [
     },
 
     {
-        imagePath: 'imgs/psychopass1.avif',
+        imagePath: 'imgs/psychopass1.webp',
         title: 'Psycho Pass'
+    },
+
+    {
+        imagePath: 'imgs/ergoproxy1.png',
+        title: 'Ergo Proxy'
+    },
+
+    {
+        imagePath: 'imgs/wep1.jpg',
+        title: 'Wonder Egg Priority'
     }
 ];
 
