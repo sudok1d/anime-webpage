@@ -8,67 +8,102 @@ body {
   font-family: "Outfit", sans-serif; 
   margin: 0px;
   padding: 0px;
+  background-color: #fff;
+ 
 }
 
-.topSqr {
-    height: 400px;
-    margin: 25px 25px 25px;
+/* NAVBAR */
+nav {
+    background-color: #272343;
+    color: #fff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+li {
+    padding: 10px 20px;
+}
+
+li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #79758f;
+}
+
+section {
+  display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* HOME PAGE */
+
+.container {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    margin: 20px 10px;
+    background-color: #e3f6f5;
     border-radius: 12px;
-    background-color: rgb(235, 235, 235);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
+    padding: 20px;
 }
 
-.textContainer {
-    display: flex;
-    margin-left: 0px;
-    align-items: center;
-    justify-content: space-between;
+.column1 {
+    flex: 1;
+    margin: 0px 10px;
+    padding: 20px;
+    
 }
 
+#frieren1 {
+    max-width: 100%;
+}
+
+/* ABOUT PAGE */
+.clickMe {
+    text-align: center;
+    padding: 10px;
+    margin: 12px;
+    font-size: 25px;
+}
 .imageContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
-    margin: 12px;
-}
-
-.imageContainer img {
-    max-width: 300px;
-    max-height: 100%;
-    object-fit: cover;
-    margin-left: 12px;
-
-}
-
-#currentText {
-    font-size: 50px;
-    text-align: left;
     justify-content: space-between;
 }
 
-#nextButton {
-    margin-top: 10px;
-    align-self: flex-end; 
-    margin-right: 100px;
-    background-color: transparent;
-    border: 0px;
-    font-size: 50px;
-    cursor: pointer;
+.imageContainer img {
     flex: 1;
-    margin: 20px;
-}
-
-#currentImage {
-    max-width: 500px;
+    max-width: 300px;
+    max-height: 100%;
     object-fit: cover;
-    margin-right: 50px;
-    border-radius: 12px;
-
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 25px;
+    border: 3px solid #bae8e8;
 }
 
+@keyframes slideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0%); }
+}
+
+.imageContainer {
+    animation: slideUp 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
 .synopsisContainer {
     flex: 1;
@@ -76,7 +111,25 @@ body {
     font-size: 20px;
 }
 
-.synopsisContainer p.synopsisTitle {
+.synopsisContainer p.synopsisTitle{
     font-size: 50px; 
     font-weight: bold;
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.synopsisContainer {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.animeSeason,
+.animeYear {
+    display: inline-block;
+    margin-right: 7px; 
+    padding-bottom: 10px;
+
+}
+

@@ -1,8 +1,8 @@
 async function fetchData() {
     try {
-        const animeIds = ['322', '13601', '790', '43299' ]
+        const animeIds = ['322', '13601', '790', '43299', '52991', '48849', '440', '338']
         const baseUrl = 'https://api.jikan.moe/v4/anime'
-        //paradise kiss, psycho pass, ergo proxy, wep 
+        //paradise kiss, psycho pass, ergo proxy, wep, frieren, sonny boy, rgu, rose of versailles 
         const animeData = [];
 
         const promises = animeIds.map(async (id) => {
@@ -30,12 +30,12 @@ async function fetchData() {
 
             image.addEventListener('click', () => {
                 const synopsis = anime.data.synopsis;
-                const title = anime.data.title;
-                showSynopsis(image, synopsis, title, container);
+                const title = anime.data.title_english;
+                const year = anime.data.year
+                const season = anime.data.season.toUpperCase();
+                showSynopsis(image, synopsis, title, year, season, container);
             });
-
-        })
-         
+        })    
     }
 
     catch (error) {
@@ -43,7 +43,7 @@ async function fetchData() {
     }
 }
 
-function showSynopsis(clickedImage, synopsis, title, container) {
+function showSynopsis(clickedImage, synopsis, title, year, season, container) {
     const allImages = container.querySelectorAll('img');
     allImages.forEach((image) => {
         if (image !== clickedImage) {
@@ -56,7 +56,6 @@ function showSynopsis(clickedImage, synopsis, title, container) {
             }
         }
     });
-
    
     let synopsisDiv = clickedImage.nextElementSibling
     if (!synopsisDiv || synopsisDiv.className !== 'synopsisContainer') {
@@ -68,12 +67,22 @@ function showSynopsis(clickedImage, synopsis, title, container) {
         synopsisTitle.classList.add('synopsisTitle');
         synopsisTitle.textContent = title
 
+        const animeYear = document.createElement('p')
+        animeYear.classList.add('animeYear');
+        animeYear.textContent = year
+
+        const animeSeason = document.createElement('p')
+        animeSeason.classList.add('animeSeason');
+        animeSeason.textContent = season
+
         const synopsisText = document.createElement('p')
         synopsisText.textContent = synopsis
 
         synopsisDiv.appendChild(synopsisTitle)
+        synopsisDiv.appendChild(animeSeason)
+        synopsisDiv.appendChild(animeYear)
         synopsisDiv.appendChild(synopsisText)
-
+    
         container.insertBefore(synopsisDiv, clickedImage.nextSibling);
     }
     
@@ -82,48 +91,23 @@ function showSynopsis(clickedImage, synopsis, title, container) {
     }
 }
 
-    
-
-
 fetchData()
 
-const imageElement = document.getElementById('currentImage');
-const textElement = document.getElementById('currentText');
-const nextButton = document.getElementById('nextButton');
+const navLinks = document.querySelectorAll('.navLink');
+const sections = document.querySelectorAll('section');
+const clickMe = document.querySelector('clickMe')
 
-const animeData = [ 
-    {
-        imagePath: 'imgs/parakiss1.webp',
-        title: 'Paradise Kiss'
-    },
+navLinks.forEach(navLink => {
+    navLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
 
-    {
-        imagePath: 'imgs/psychopass1.webp',
-        title: 'Psycho Pass'
-    },
-
-    {
-        imagePath: 'imgs/ergoproxy1.png',
-        title: 'Ergo Proxy'
-    },
-
-    {
-        imagePath: 'imgs/wep1.jpg',
-        title: 'Wonder Egg Priority'
-    }
-];
-
-
-let currentItemIndex = 0;
-
-function changeDetails() {
-    imageElement.src = animeData[currentItemIndex].imagePath;
-    textElement.textContent = animeData[currentItemIndex].title;
-    currentItemIndex = (currentItemIndex + 1) % animeData.length;
-    }
-
-nextButton.addEventListener('click', changeDetails);
-
-changeDetails();
-
-
+        const targetId = this.getAttribute('href').substring(1);
+    
+        const targetSection = document.getElementById(targetId);
+        targetSection.style.display = 'block';
+    });
+});

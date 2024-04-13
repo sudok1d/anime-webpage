@@ -6,26 +6,60 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
     </header>
     <body>
-        
-        <div class="topSqr">
-            <div class="textContainer">
-                <p id="currentText"></p>
-                <button id="nextButton">➤</button>
-                
-            </div>
-            <div class="galleryContainer">
-                <img id="currentImage" src="" alt="Anime Image">
-            </div>
-           
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="#home" class="navLink">Home</a></li>
+                    <li><a href="#about" class="navLink">About</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="imageContainer">
-        </div>
-        <div class="imageSynopsis">
-            <p id="synopsis"></p>
 
-        </div>
+        <section id="home" class="active">
+            <div class="container">
+                <div class="column">
+                    <h2>My Top 8 Favorite Anime</h2>
+                    <div id="text">This is a small portfolio of my favorite anime from over the years! Among various captivating anime series, a few stand out as personal favorites, each offering a blend of thought-provoking narratives and unforgettable characters. 'Paradise Kiss' shares a tale of self-discovery and love set against the backdrop of the fashion industry, immersing viewers in its vibrant world of haute couture and youthful ambition. In contrast, 'Psycho-Pass' delves into the complexities of a dystopian society governed by an omnipresent surveillance system, exploring themes of justice, morality, and the human psyche. 'Ergo Proxy' transports audiences to a post-apocalyptic world shrouded in mystery and existential uncertainty, where philosophical undertones intertwine with gripping storytelling to unravel the enigma of human identity. Lastly, 'Wonder Egg Priority' offers a surreal and introspective journey into the psyche of adolescence, blending elements of fantasy and psychological drama to illuminate the struggles of youth and the quest for belonging in a fragmented reality.</div>
+                </div>
+                
+                <div class="column1">
+                    <img id="frieren1" src="imgs/frieren1.webp">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="column1">
+                    <img id="frieren1" src="imgs/sonnyboy1.jpg">
+                    
+                </div>
+                
+                <div class="column">
+                    <div id="text"> 'Revolutionary Girl Utena' weaves a mesmerizing narrative of adolescence, identity, and the pursuit of revolution, enveloping viewers in a world where duels and enigmatic symbols intertwine with themes of self-discovery and societal critique. 'Rose of Versailles' transports audiences to the opulent courts of 18th-century France, blending history with drama to portray the journey of Oscar François de Jarjayes, a figure who challenges gender norms and fights for justice in a time of political upheaval. 'Sonny Boy' ventures into the surreal, presenting a group of students trapped in a shifting reality where imagination reigns supreme, prompting introspection on existentialism and the nature of freedom. Lastly, 'Frieren: Beyond Journey's End' offers a poignant exploration of friendship and mortality, following the immortal warrior Frieren as she embarks on a quest to unravel the mysteries of life and death. Together, these anime captivate the soul and ignite the imagination, leaving an indelible mark on the hearts of viewers."</div>
+                    
+                </div>
+            </div>
+            
+            
+        </section>
+    
+        <section id="about">
+            <div class="clickMe">
+                Click one of the images below to view a synopsis!
+            </div>
+            <div class="imageContainer">
+            </div>
+            <div class="imageSynopsis">
+                <p id="synopsis"></p>
+
+            </div>
+        </section>
+           
         <script src="script.js"></script>
     </body>
 </html>
